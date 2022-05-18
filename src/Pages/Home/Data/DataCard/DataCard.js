@@ -5,7 +5,7 @@ import DataCards from '../DataCards/DataCards';
 
 const DataCard = () => {
     const {apiData} = useData()
-    console.log(apiData)
+
 
     return (
         <div>

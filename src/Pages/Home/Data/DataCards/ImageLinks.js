@@ -1,6 +1,7 @@
 import React from 'react';
 
-const ImageLinks = () => {
+const ImageLinks = ({img}) => {
+    console.log(img)
     return (
         <div>
             
