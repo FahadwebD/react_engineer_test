@@ -32,7 +32,7 @@ const DataCards = ({data}) => {
           
           alt="green iguana"
         />:<ReactElasticCarousel verticalMode itemsToShow={1}>{imageData.map((item, index) => <item key={index}>  
-        <h1>{index}</h1>
+        
         <CardMedia
             component="img"
             height="140"
