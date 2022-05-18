@@ -1,10 +1,9 @@
 import { Container, Grid, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import useData from '../../../../hooks/useData';
 import DataCards from '../DataCards/DataCards';
-import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 
 const DataCard = () => {
     const [apiData , setApiData] = useState([])
@@ -22,6 +21,16 @@ const DataCard = () => {
     
     
     },[])
+
+    const handleMenuTabs = (type) => {
+        
+        const successLunched = apiData.filter((item) => type === item.launch_success)
+        setDisplayInfo(successLunched)
+    }
+
+
+
+
     const handleSearch = event => {
         const searchText = event.target.value;
 
@@ -29,23 +38,27 @@ const DataCard = () => {
 
         setDisplayInfo(matchedProducts);
     }
+
+
     return (
         <div>
-           <Container>
+           <Container sx={{mb:3}}>
             <Typography variant="h4" sx={{ color: '#5CE7ED', mb: 3 }}>Information</Typography>
-            <Box
-      sx={{
-        mb: 3,
-        width: 500,
-        maxWidth: '100%',
-        
-      }}
-    >
+           
+    <Stack direction="row" spacing={2}>
+    
       <TextField 
       onChange={handleSearch}
       
       fullWidth label="Search" id="fullWidth" />
-    </Box>
+    
+      <Button variant="contained" color="success" onClick={() => handleMenuTabs(true)}>
+        Success
+      </Button>
+      <Button variant="outlined" color="error" onClick={() => handleMenuTabs(false)}>
+        Error
+      </Button>
+    </Stack>
     </Container>  
     <Container>
             <Grid container spacing={2}>
