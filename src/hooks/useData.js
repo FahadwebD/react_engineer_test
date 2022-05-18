@@ -19,7 +19,7 @@ useEffect(()=>{
 
 },[])
 
-return {apiData}
+return {apiData , setApiData}
 
 }
 
