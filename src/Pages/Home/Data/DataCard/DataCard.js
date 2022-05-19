@@ -7,7 +7,6 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
-import NativeSelect from '@mui/material/NativeSelect';
 import moment from 'moment';
 
 
@@ -15,10 +14,15 @@ const DataCard = () => {
     const [apiData , setApiData] = useState([])
     const [displayInfo, setDisplayInfo] = useState([]);
     const [filtter, setFilter] = React.useState('');
+     
+
 
     const handleChange = (event) => {
       setFilter(event.target.value);
     };
+
+
+
     useEffect(()=>{
 
 
@@ -31,6 +35,9 @@ const DataCard = () => {
     
     
     },[])
+
+
+
     const clearFilters = () =>{
 
 
@@ -45,11 +52,19 @@ const DataCard = () => {
     
     }
 
+
+
     const handleMenuTabs = (type) => {
         
         const successLunched = apiData.filter((item) => type === item.launch_success)
         setDisplayInfo(successLunched)
     }
+
+    const upComming = (type) => {
+        
+      const successLunched = apiData.filter((item) => type === item.upcoming)
+      setDisplayInfo(successLunched)
+  }
 
 
    const lastYear = () =>{
@@ -63,6 +78,9 @@ const DataCard = () => {
     setDisplayInfo(lastYearData);
     
    }
+
+
+
    const lastMonth = () =>{
  
     //Sunday 4 September 2016 - Week 36
@@ -72,9 +90,11 @@ const DataCard = () => {
    
     const lastMonthData = apiData.filter((item) => lastM === moment(item.launch_date_local).format('MMYY'))
     
-    console.log(lastMonthData)
+    setDisplayInfo(lastMonthData);
     
    }
+
+
 
     const handleSearch = event => {
         const searchText = event.target.value;
@@ -83,6 +103,9 @@ const DataCard = () => {
 
         setDisplayInfo(matchedProducts);
     }
+
+
+
 
 
     return (
@@ -102,6 +125,9 @@ const DataCard = () => {
       </Button>
       <Button variant="outlined" color="error" onClick={() => handleMenuTabs(false)} >
         Failed
+      </Button>
+      <Button variant="outlined" color="secondary" onClick={() => upComming(true)} >
+        Upcoming
       </Button>
       <Box sx={{ minWidth: 120 }}>
       <FormControl fullWidth>
@@ -129,6 +155,7 @@ const DataCard = () => {
             <Grid container spacing={2}>
             {
                 displayInfo.map(data=> <DataCards
+                key={data.mission_name}
                 data={data}
                 ></DataCards>)
             }

@@ -31,7 +31,7 @@ const DataCards = ({data}) => {
           image="https://i.ibb.co/859KWGp/ezgif-com-gif-maker.gif"
           
           alt="green iguana"
-        />:<ReactElasticCarousel verticalMode itemsToShow={1}>{imageData.map((item, index) => <item key={index}>  
+        />:<ReactElasticCarousel verticalMode itemsToShow={1}>{imageData.map((item, index) => <li key={index}>  
         
         <CardMedia
             component="img"
@@ -40,7 +40,7 @@ const DataCards = ({data}) => {
             alt="green iguana"
           />
         
-        </item>)}</ReactElasticCarousel>}
+        </li>)}</ReactElasticCarousel>}
 
 
 
