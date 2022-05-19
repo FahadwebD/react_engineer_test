@@ -58,7 +58,7 @@ const DataCard = () => {
     let today    = moment();
     var lastY = moment(today).add(-1, 'year').format('YYYY');
     
-    const lastYearData = apiData.filter((item) => '2020' === item.launch_year)
+    const lastYearData = apiData.filter((item) => lastY  === item.launch_year)
 
     setDisplayInfo(lastYearData);
     
@@ -66,11 +66,13 @@ const DataCard = () => {
    const lastMonth = () =>{
  
     //Sunday 4 September 2016 - Week 36
-    let today    = moment();
+    let today    = '2010-07-08T15:43:00.000Z';
+  
     var lastM = moment(today).add(-1, 'month').format('MMYY');
-    const lastMonthData = apiData.filter((item) => '2020' === item.launch_year)
+   
+    const lastMonthData = apiData.filter((item) => lastM === moment(item.launch_date_local).format('MMYY'))
     
-    console.log(lastM)
+    console.log(lastMonthData)
     
    }
 
@@ -113,7 +115,7 @@ const DataCard = () => {
         >
           <MenuItem onClick={lastYear} value={10}>Last Year</MenuItem>
           <MenuItem onClick={lastMonth} value={20}>Last Month</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          <MenuItem value={30}>Last Week</MenuItem>
         </Select>
       </FormControl>
     </Box>
