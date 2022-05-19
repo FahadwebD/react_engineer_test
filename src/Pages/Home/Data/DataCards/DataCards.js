@@ -54,8 +54,13 @@ const DataCards = ({data}) => {
             {data?.rocket?.rocket_name}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
+            Flight Number : {data.flight_number}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Lunched Year :{data.launch_year}
+          </Typography>
+          <Typography variant="body2" color="text.warning">
+            {data.launch_success == true? 'Successfully Lunched':'Failed To Lunch'}
           </Typography>
         </CardContent>
       </CardActionArea>
